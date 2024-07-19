@@ -1,11 +1,8 @@
 package inha.edu.upcyclingapp.model.ai;
 
-import lombok.Getter;
-
 import java.util.List;
 import java.util.StringJoiner;
 
-@Getter
 public record VisionResponse(List<Generation> generations) {
 
     public String join() {
