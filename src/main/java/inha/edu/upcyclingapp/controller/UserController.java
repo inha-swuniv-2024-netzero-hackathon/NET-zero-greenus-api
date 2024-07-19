@@ -1,13 +1,15 @@
 package inha.edu.upcyclingapp.controller;
 
 import inha.edu.upcyclingapp.dto.*;
-import inha.edu.upcyclingapp.model.Mission;
 import inha.edu.upcyclingapp.model.Saving;
 import inha.edu.upcyclingapp.model.User;
 import inha.edu.upcyclingapp.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -37,15 +39,14 @@ public class UserController {
 
     @GetMapping("/users/{userId}/missions")
     public ResponseEntity<MissionListResponse> getMissions(@PathVariable Long userId) {
-        return ResponseEntity.ok(new MissionListResponse(missionService.getMissionsByUserId(userId)));
-    }
+        List<MissionResponse> responses = new ArrayList<>();
 
-    @GetMapping("/users/{userId}/missions/{missionId}")
-    public ResponseEntity<MissionResponse> getMissions(@PathVariable Long userId, @PathVariable Long missionId) {
-        Mission mission = missionService.getMissionsById(missionId);
-        String certificationImage = certificationService.getCertificationImage(missionId);
+        missionService.getMissionsByUserId(userId).forEach(
+                mission ->
+                        responses.add(new MissionResponse(mission, certificationService.getCertificationImage(mission.getId())))
+        );
 
-        return ResponseEntity.ok(new MissionResponse(mission, certificationImage));
+        return ResponseEntity.ok(new MissionListResponse(responses));
     }
 
     @PostMapping("/users/{userId}/letters")
