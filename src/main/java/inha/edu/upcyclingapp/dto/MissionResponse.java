@@ -12,7 +12,7 @@ public class MissionResponse {
 
     public MissionResponse(Mission mission, String imageUrl) {
         this.title = mission.getMissionContent();
-        this.description = description;
+        this.description = mission.getDescription();
         this.isCompleted = mission.getIsCompleted();
         this.imageUrl = imageUrl;
     }

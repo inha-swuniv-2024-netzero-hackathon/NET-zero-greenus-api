@@ -55,6 +55,6 @@ public class CertificationService {
     }
 
     private static String getKey(CertificationRequest request) {
-        return String.format("/%s/", request.getUserId()) + UUID.randomUUID();
+        return String.format("%s/", request.getUserId()) + UUID.randomUUID();
     }
 }
