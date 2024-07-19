@@ -32,6 +32,9 @@ public class AiService {
 
     public String test() {
         String prompt = generateKeywordRecommendationPrompt();
+
+        System.out.println("prompt: " + prompt);
+
         String response = foundationModel.call(new Message.UserMessage(prompt)).join();
 
         System.out.println(response);
