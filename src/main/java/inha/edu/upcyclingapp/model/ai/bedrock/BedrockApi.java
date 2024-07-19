@@ -43,7 +43,7 @@ public class BedrockApi {
                                                 .source(ImageSource.builder()
                                                         .bytes(SdkBytes.fromUtf8String(message.getContent()))
                                                         .build())
-                                                .format("JPEG")
+                                                .format("jpeg")
                                         .build()),
                                 ContentBlock.fromText("어디 카테고리에 속하는 제품일까요?"))
                         )
