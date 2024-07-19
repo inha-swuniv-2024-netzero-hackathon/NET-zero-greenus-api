@@ -20,6 +20,9 @@ public class Certification {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
+    @Column(name = "mission_id")
+    private Long missionId;
+
     @Column(name = "image_path", nullable = false, length = 255)
     private String imagePath;
 
@@ -33,8 +36,9 @@ public class Certification {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Certification(Long userId, String imagePath, String category) {
+    public Certification(Long userId, Long missionId, String imagePath, String category) {
         this.userId = userId;
+        this.missionId = missionId;
         this.imagePath = imagePath;
         this.category = category;
         this.createdAt = LocalDateTime.now();

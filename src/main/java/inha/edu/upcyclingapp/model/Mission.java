@@ -2,9 +2,11 @@ package inha.edu.upcyclingapp.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
 @Getter
 @Entity
 @Table(name = "missions")
@@ -28,4 +30,8 @@ public class Mission {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public void completeMission() {
+        this.isCompleted = true;
+    }
 }

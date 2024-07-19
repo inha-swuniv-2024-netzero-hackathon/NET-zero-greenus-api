@@ -2,6 +2,7 @@ package inha.edu.upcyclingapp.controller;
 
 import inha.edu.upcyclingapp.dto.CategorySuggestionResponse;
 import inha.edu.upcyclingapp.dto.CertificationRequest;
+import inha.edu.upcyclingapp.dto.CommonResponse;
 import inha.edu.upcyclingapp.service.CertificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class CertificationController {
             String result = certificationService.addCertification(request);
 
             if (result == null) {
-                return ResponseEntity.ok("success");
+                return ResponseEntity.ok(new CommonResponse("success"));
             }
 
             return ResponseEntity.status(400)
