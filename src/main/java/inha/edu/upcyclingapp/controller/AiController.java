@@ -24,10 +24,9 @@ public class AiController {
         return certificationAiService.getTestCertification();
     }
 
-    @PostMapping("/question")
+    @PostMapping("/ai/questions")
     public ResponseEntity<CommonResponse> question(@RequestBody QuestionRequest request) {
-        return ResponseEntity.ok(
-                new CommonResponse(questionAiService.getAnswer(request.getQuestion()))
-        );
+        String answer = questionAiService.getAnswer(request.getQuestion());
+        return ResponseEntity.ok(new CommonResponse(answer));
     }
 }
