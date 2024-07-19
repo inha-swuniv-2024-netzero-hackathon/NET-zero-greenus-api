@@ -8,3 +8,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+ai:
+  aws:
+    bedrock:
+      region: us-east-1
