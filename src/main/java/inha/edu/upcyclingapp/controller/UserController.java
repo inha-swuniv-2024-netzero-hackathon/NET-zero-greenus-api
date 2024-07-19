@@ -53,8 +53,8 @@ public class UserController {
         User user = userService.getUser(userId);
         lambdaService.invokeLambda("upcycling-lambda", String.format("""
                 {
-                  "name": %s,
-                  "userId": %s
+                  "name": "%s",
+                  "userId": "%s"
                 }
                 """, user.getNickname(), user.getId()));
 
