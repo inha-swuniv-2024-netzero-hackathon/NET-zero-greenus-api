@@ -4,10 +4,12 @@ package inha.edu.upcyclingapp.model;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
 @Getter
 @Entity
 @Table(name = "savings")
