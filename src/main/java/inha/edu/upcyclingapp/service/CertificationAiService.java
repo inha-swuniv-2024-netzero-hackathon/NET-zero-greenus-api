@@ -12,7 +12,7 @@ import java.io.InputStream;
 
 @RequiredArgsConstructor
 @Service
-public class AiService {
+public class CertificationAiService {
 
     private final ResourceLoader resourceLoader;
     private final FoundationModel foundationModel;

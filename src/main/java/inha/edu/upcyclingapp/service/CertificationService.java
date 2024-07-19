@@ -14,7 +14,7 @@ import java.util.UUID;
 public class CertificationService {
 
     private final S3ImageProcessor s3ImageProcessor;
-    private final AiService aiService;
+    private final CertificationAiService aiService;
     private final CertificationRepository certificationPhotoRepository;
 
     public String addCertification(CertificationRequest request) throws IOException {

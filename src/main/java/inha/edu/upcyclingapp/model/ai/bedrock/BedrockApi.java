@@ -38,7 +38,11 @@ public class BedrockApi {
         List<software.amazon.awssdk.services.bedrockruntime.model.Message> sdkMessages = messages.stream()
                 .map(message -> software.amazon.awssdk.services.bedrockruntime.model.Message.builder()
                         .role(message.getRole() == MessageType.USER ? ConversationRole.USER : ConversationRole.ASSISTANT)
-                        .content(List.of(
+                        .content(message.getImage() == null ?
+                                List.of(
+                                        ContentBlock.fromText(message.getContent())
+                                ) :
+                                List.of(
                                 ContentBlock.fromImage(ImageBlock.builder()
                                                 .source(ImageSource.builder()
                                                         .bytes(SdkBytes.fromByteArray(message.getImage()))
