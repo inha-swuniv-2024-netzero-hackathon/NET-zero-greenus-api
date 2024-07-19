@@ -5,6 +5,7 @@ import inha.edu.upcyclingapp.model.Saving;
 import inha.edu.upcyclingapp.model.User;
 import inha.edu.upcyclingapp.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class UserController {
+
+    @Value("${cloud.aws.cloudfront.domain}")
+    private String cloudFrontDomain;
 
     private final UserService userService;
     private final SavingService savingService;
@@ -60,5 +64,11 @@ public class UserController {
                 """, user.getNickname(), user.getId()));
 
         return ResponseEntity.ok(new CommonResponse("success"));
+    }
+
+
+    @GetMapping("/users/{userId}/letters")
+    public ResponseEntity<LetterResponse> readLetter(@PathVariable Long userId) {
+        return ResponseEntity.ok(new LetterResponse(cloudFrontDomain + "/" + userId + "/certifictaion.pdf"));
     }
 }
