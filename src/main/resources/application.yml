@@ -12,3 +12,11 @@ ai:
   aws:
     bedrock:
       region: us-east-1
+cloud:
+  aws:
+    s3:
+      bucket: upcycling-bucket
+    stack:
+      auto: false
+    region:
+      static: ap-northeast-2
