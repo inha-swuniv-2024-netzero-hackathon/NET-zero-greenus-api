@@ -14,7 +14,7 @@ public class AiController {
 
     @GetMapping("/ai")
     public String test() {
-        return aiService.getCertification();
+        return aiService.getTestCertification();
     }
 
 }
