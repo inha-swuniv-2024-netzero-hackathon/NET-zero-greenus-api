@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface MissionRepository extends JpaRepository<Mission, Long>{
     List<Mission> findByUserIdAndIsCompletedFalse(Long userId);
     List<Mission> findByUserId(Long userId);
-    Optional<Mission> findByUserIdAndCategory(Long userId, String category);
+    Optional<Mission> findByUserIdAndMissionContent(Long userId, String missionContent);
 }

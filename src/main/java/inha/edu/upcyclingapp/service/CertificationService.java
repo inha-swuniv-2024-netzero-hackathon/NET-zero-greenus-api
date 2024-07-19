@@ -32,7 +32,7 @@ public class CertificationService {
             String key = getKey(request);
             s3ImageProcessor.upload(key, request.getImage());
 
-            Mission mission = missionRepository.findByUserIdAndCategory(request.getUserId(), request.getCategory()).orElseGet(Mission::new);
+            Mission mission = missionRepository.findByUserIdAndMissionContent(request.getUserId(), request.getCategory()).orElseGet(Mission::new);
 
             certificationRepository.save(Certification.builder()
                             .userId(request.getUserId())
