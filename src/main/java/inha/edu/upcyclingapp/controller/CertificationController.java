@@ -23,9 +23,6 @@ public class CertificationController {
     public ResponseEntity<?> addCertification(@RequestParam("file") MultipartFile file,
                                                    @RequestParam("userId") Long userId,
                                                    @RequestParam("category") String category) {
-
-        System.out.println("요청 들어옴");
-
         try {
             CertificationRequest request = new CertificationRequest(userId, category, file);
             String result = certificationService.addCertification(request);
@@ -37,7 +34,6 @@ public class CertificationController {
             return ResponseEntity.status(400)
                     .body(new CategorySuggestionResponse(result));
         } catch (IOException e) {
-            e.printStackTrace();
             return ResponseEntity.internalServerError().build();
         }
     }
