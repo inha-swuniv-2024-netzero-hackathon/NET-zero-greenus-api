@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 
 @RequiredArgsConstructor
 @Service
@@ -18,24 +17,21 @@ public class AiService {
     private final ResourceLoader resourceLoader;
     private final FoundationModel foundationModel;
 
-    public String generateKeywordRecommendationPrompt() {
+    public byte[] generateKeywordRecommendationPrompt() {
         Resource resource = resourceLoader.getResource("classpath:static/" + "example.jpg");
 
         try (InputStream inputStream = resource.getInputStream()) {
-            return Arrays.toString(inputStream.readAllBytes());
+            return inputStream.readAllBytes();
         } catch (IOException e) {
             System.out.println("error");
         }
 
-        return "";
+        return null;
     }
 
     public String test() {
-        String prompt = generateKeywordRecommendationPrompt();
-
-        System.out.println("prompt: " + prompt);
-
-        String response = foundationModel.call(new Message.UserMessage(prompt)).join();
+        String response = foundationModel
+                .call(new Message.UserMessage("", generateKeywordRecommendationPrompt())).join();
 
         System.out.println(response);
 

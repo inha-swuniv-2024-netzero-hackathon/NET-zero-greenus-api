@@ -41,7 +41,7 @@ public class BedrockApi {
                         .content(List.of(
                                 ContentBlock.fromImage(ImageBlock.builder()
                                                 .source(ImageSource.builder()
-                                                        .bytes(SdkBytes.fromUtf8String(message.getContent()))
+                                                        .bytes(SdkBytes.fromByteArray(message.getImage()))
                                                         .build())
                                                 .format("jpeg")
                                         .build()),
