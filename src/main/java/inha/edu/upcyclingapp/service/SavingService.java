@@ -12,7 +12,8 @@ public class SavingService {
     private final SavingRepository savingRepository;
 
     public Saving getSaving(Long userId) {
-        return savingRepository.findByUserId(userId).get();
+        return savingRepository.findByUserId(userId)
+                .orElse(null);
     }
 
 }

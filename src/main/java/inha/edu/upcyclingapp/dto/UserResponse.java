@@ -13,6 +13,6 @@ public class UserResponse {
     public UserResponse(User user, Saving saving) {
         this.id = user.getId();
         this.name = user.getNickname();
-        this.saving = new SavingDto(saving);
+        this.saving = saving == null ? null : new SavingDto(saving);
     }
 }
