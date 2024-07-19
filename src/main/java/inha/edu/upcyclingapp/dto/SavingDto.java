@@ -18,4 +18,14 @@ public class SavingDto {
         this.interestRate = saving.getInterestRate();
         this.balance = saving.getBalance();
     }
+
+    public Saving toEntity(Long userId) {
+        return Saving.builder()
+                .userId(userId)
+                .bank(bank)
+                .savingsName(savingsName)
+                .interestRate(interestRate)
+                .balance(balance)
+                .build();
+    }
 }

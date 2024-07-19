@@ -2,6 +2,7 @@ package inha.edu.upcyclingapp.model;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -36,4 +37,15 @@ public class Saving {
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    @Builder
+    public Saving(Long userId, String bank, String savingsName, BigDecimal interestRate, BigDecimal balance, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.userId = userId;
+        this.bank = bank;
+        this.savingsName = savingsName;
+        this.interestRate = interestRate;
+        this.balance = balance;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }
