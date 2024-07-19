@@ -20,3 +20,5 @@ cloud:
       auto: false
     region:
       static: ap-northeast-2
+    cloudfront:
+        domain: d23fpzkzsmv7d3.cloudfront.net
