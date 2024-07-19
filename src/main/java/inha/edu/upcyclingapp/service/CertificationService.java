@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -50,13 +51,13 @@ public class CertificationService {
     }
 
     public String getCertificationImage(Long missionId) {
-        Certification certification = certificationRepository.findByMissionId(missionId).orElseGet(null);
+        Optional<Certification> certification = certificationRepository.findByMissionId(missionId);
 
-        if (certification == null) {
+        if (certification.isEmpty()) {
             return null;
         }
 
-        return cloudFrontDomain + "/" +  certification.getImagePath();
+        return cloudFrontDomain + "/" +  certification.get().getImagePath();
     }
 
     private static String getKey(CertificationRequest request) {
