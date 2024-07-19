@@ -45,7 +45,7 @@ public class BedrockApi {
                                                         .build())
                                                 .format("jpeg")
                                         .build()),
-                                ContentBlock.fromText("어디 카테고리에 속하는 제품일까요?"))
+                                ContentBlock.fromText(message.getContent()))
                         )
                         .build())
                 .collect(Collectors.toList());
