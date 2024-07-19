@@ -1,7 +1,9 @@
 package inha.edu.upcyclingapp.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Getter
 public class QuestionRequest {
     private String question;
