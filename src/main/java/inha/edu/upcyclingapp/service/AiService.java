@@ -19,7 +19,7 @@ public class AiService {
     private final FoundationModel foundationModel;
 
     public String generateKeywordRecommendationPrompt() {
-        Resource resource = resourceLoader.getResource("classpath:static/" + "static/example.jpg");
+        Resource resource = resourceLoader.getResource("classpath:static/" + "example.jpg");
 
         try (InputStream inputStream = resource.getInputStream()) {
             return Arrays.toString(inputStream.readAllBytes());
