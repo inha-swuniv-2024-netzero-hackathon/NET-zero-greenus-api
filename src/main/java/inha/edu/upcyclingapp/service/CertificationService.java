@@ -50,7 +50,12 @@ public class CertificationService {
     }
 
     public String getCertificationImage(Long missionId) {
-        Certification certification = certificationRepository.findByMissionId(missionId).orElseThrow();
+        Certification certification = certificationRepository.findByMissionId(missionId).orElseGet(null);
+
+        if (certification == null) {
+            return null;
+        }
+
         return cloudFrontDomain + "/" +  certification.getImagePath();
     }
 
