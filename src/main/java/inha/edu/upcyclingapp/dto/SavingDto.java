@@ -2,9 +2,11 @@ package inha.edu.upcyclingapp.dto;
 
 import inha.edu.upcyclingapp.model.Saving;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@NoArgsConstructor
 @Getter
 public class SavingDto {
     private String bank;
