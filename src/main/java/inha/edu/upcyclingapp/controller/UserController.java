@@ -69,6 +69,6 @@ public class UserController {
 
     @GetMapping("/users/{userId}/letters")
     public ResponseEntity<LetterResponse> readLetter(@PathVariable Long userId) {
-        return ResponseEntity.ok(new LetterResponse(cloudFrontDomain + "/" + userId + "/pdf/certifictaion.pdf"));
+        return ResponseEntity.ok(new LetterResponse(cloudFrontDomain + "/" + userId + "/pdf/certification.pdf"));
     }
 }
