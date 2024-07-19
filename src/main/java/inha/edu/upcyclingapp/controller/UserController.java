@@ -1,10 +1,13 @@
 package inha.edu.upcyclingapp.controller;
 
+import inha.edu.upcyclingapp.dto.MissionListResponse;
 import inha.edu.upcyclingapp.dto.MissionResponse;
 import inha.edu.upcyclingapp.dto.SavingDto;
 import inha.edu.upcyclingapp.dto.UserResponse;
+import inha.edu.upcyclingapp.model.Mission;
 import inha.edu.upcyclingapp.model.Saving;
 import inha.edu.upcyclingapp.model.User;
+import inha.edu.upcyclingapp.service.CertificationService;
 import inha.edu.upcyclingapp.service.MissionService;
 import inha.edu.upcyclingapp.service.SavingService;
 import inha.edu.upcyclingapp.service.UserService;
@@ -19,6 +22,7 @@ public class UserController {
     private final UserService userService;
     private final SavingService savingService;
     private final MissionService missionService;
+    private final CertificationService certificationService;
 
     @GetMapping("/users/{userId}/savings")
     public ResponseEntity<UserResponse> getSavings(@PathVariable Long userId) {
@@ -37,7 +41,15 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}/missions")
-    public ResponseEntity<MissionResponse> getMissions(@PathVariable Long userId) {
-        return ResponseEntity.ok(new MissionResponse(missionService.getMissions(userId)));
+    public ResponseEntity<MissionListResponse> getMissions(@PathVariable Long userId) {
+        return ResponseEntity.ok(new MissionListResponse(missionService.getMissionsByUserId(userId)));
+    }
+
+    @GetMapping("/users/{userId}/missions/{missionId}")
+    public ResponseEntity<MissionResponse> getMissions(@PathVariable Long userId, @PathVariable Long missionId) {
+        Mission mission = missionService.getMissionsById(missionId);
+        String certificationImage = certificationService.getCertificationImage(missionId);
+
+        return ResponseEntity.ok(new MissionResponse(mission, certificationImage));
     }
 }

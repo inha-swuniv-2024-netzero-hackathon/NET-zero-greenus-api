@@ -13,7 +13,12 @@ public class MissionService {
 
     private final MissionRepository missionRepository;
 
-    public List<Mission> getMissions(Long userId) {
+    public List<Mission> getMissionsByUserId(Long userId) {
         return missionRepository.findByUserId(userId);
+    }
+
+    public Mission getMissionsById(Long missionId) {
+        return missionRepository.findById(missionId)
+                .orElseThrow();
     }
 }

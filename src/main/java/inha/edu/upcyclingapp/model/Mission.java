@@ -22,6 +22,9 @@ public class Mission {
     @Column(name = "mission_content", nullable = false)
     private String missionContent;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "is_completed", nullable = false)
     private Boolean isCompleted;
 

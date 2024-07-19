@@ -7,6 +7,7 @@ import inha.edu.upcyclingapp.repository.CertificationRepository;
 import inha.edu.upcyclingapp.repository.MissionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -15,6 +16,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Service
 public class CertificationService {
+
+    @Value("${cloud.aws.cloudfront.domain}")
+    private String cloudFrontDomain;
 
     private final S3ImageProcessor s3ImageProcessor;
     private final CertificationAiService aiService;
@@ -43,6 +47,11 @@ public class CertificationService {
             mission.completeMission();
             return null;
         }
+    }
+
+    public String getCertificationImage(Long missionId) {
+        Certification certification = certificationRepository.findByMissionId(missionId).orElseThrow();
+        return cloudFrontDomain + certification.getImagePath();
     }
 
     private static String getKey(CertificationRequest request) {

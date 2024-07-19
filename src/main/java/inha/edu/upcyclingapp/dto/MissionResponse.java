@@ -3,13 +3,17 @@ package inha.edu.upcyclingapp.dto;
 import inha.edu.upcyclingapp.model.Mission;
 import lombok.Getter;
 
-import java.util.List;
-
 @Getter
 public class MissionResponse {
-    private List<Mission> missions;
+    private String title;
+    private String description;
+    private Boolean isCompleted;
+    private String imageUrl;
 
-    public MissionResponse(List<Mission> missions) {
-        this.missions = missions;
+    public MissionResponse(Mission mission, String imageUrl) {
+        this.title = mission.getMissionContent();
+        this.description = description;
+        this.isCompleted = mission.getIsCompleted();
+        this.imageUrl = imageUrl;
     }
 }
