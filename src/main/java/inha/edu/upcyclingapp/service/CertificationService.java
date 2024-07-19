@@ -17,14 +17,21 @@ public class CertificationService {
     private final AiService aiService;
     private final CertificationRepository certificationPhotoRepository;
 
-    public void addCertification(CertificationRequest request) throws IOException {
-        String key = getKey(request);
-        s3ImageProcessor.upload(key, request.getImage());
-        certificationPhotoRepository.save(Certification.builder()
-                        .userId(request.getUserId())
-                        .imagePath(key)
-                        .category(aiService.getCertification(request.getImage().getBytes()))
-                        .build());
+    public String addCertification(CertificationRequest request) throws IOException {
+
+        String aiCategory = aiService.getCertification(request.getImage().getBytes());
+
+        if (!aiCategory.equals(request.getCategory())) {
+            return aiCategory;
+        } else {
+            String key = getKey(request);
+            s3ImageProcessor.upload(key, request.getImage());
+            certificationPhotoRepository.save(Certification.builder()
+                            .userId(request.getUserId())
+                            .imagePath(key)
+                            .category(aiCategory).build());
+            return null;
+        }
     }
 
     private static String getKey(CertificationRequest request) {
