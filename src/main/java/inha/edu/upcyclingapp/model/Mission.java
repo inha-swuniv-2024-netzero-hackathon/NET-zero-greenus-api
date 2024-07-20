@@ -22,6 +22,9 @@ public class Mission {
     @Column(name = "mission_content", nullable = false)
     private String missionContent;
 
+    @Column(name = "icon_url")
+    private String iconUrl;
+
     @Column(name = "description")
     private String description;
 

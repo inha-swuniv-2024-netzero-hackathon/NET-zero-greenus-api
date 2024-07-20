@@ -8,6 +8,7 @@ public class MissionResponse {
     private Long id;
     private String title;
     private String description;
+    private String iconUrl;
     private Boolean isCompleted;
     private String imageUrl;
 
@@ -15,6 +16,7 @@ public class MissionResponse {
         this.id = mission.getId();
         this.title = mission.getMissionContent();
         this.description = mission.getDescription();
+        this.iconUrl = mission.getIconUrl();
         this.isCompleted = mission.getIsCompleted();
         this.imageUrl = imageUrl;
     }
