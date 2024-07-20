@@ -127,7 +127,7 @@ curl -F 'file=@/home/ec2-user/upcycling/src/main/resources/static/1.jpg' -F 'use
 
 * 요청온 질문을 바탕으로 LLM으로 응답
 
-" POST /ai/question
+> POST /ai/question
 
 
 요청 파라미터
