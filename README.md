@@ -49,7 +49,7 @@ IP: 43.203.144.204:8080
 
 * 잔액, 적금명, 은행을 입력 받아 DB에 저장
 
-> POST /user/{userId}/savings
+> POST /users/{userId}/savings
 
 요청 바디
 ```
